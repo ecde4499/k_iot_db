@@ -62,6 +62,24 @@ GROUP BY
 ORDER BY
 	max(purchase_date) DESC
 LIMIT 3;
+
 -- 8. 회원별로 구매한 총 금액(amount의 합)을 조회하시오.
 -- group by, 집계함수
+SELECT * FROM `members`;
+SELECT * FROM `purchases`;
+
+SELECT * FROM `members` M
+    JOIN `purchases` P
+    ON M.member_id = P.member_id;
+
+select
+	M.name, P.member_id, sum(amount)
+FROM
+	`purchases` P
+    JOIN `members` M
+    ON M.member_id = P.member_id
+group by
+	member_id;
+
+
 
